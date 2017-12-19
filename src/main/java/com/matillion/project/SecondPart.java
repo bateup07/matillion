@@ -1,6 +1,7 @@
 package com.matillion.project;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class SecondPart {
 
@@ -29,9 +30,21 @@ public class SecondPart {
             sql += "ORDER BY full_name ASC;";
 
             pst = conn.prepareStatement(sql);
-            pst.setString(1, DEPT_DESC);
-            pst.setString(2, PAY_TYPE);
-            pst.setString(3, EDUCATION_LEVEL);
+
+            //User input
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter your department description");
+            String dept = scanner.nextLine();
+
+            System.out.println("Enter your pay type");
+            String pay_type = scanner.nextLine();
+
+            System.out.println("Enter your education level");
+            String education_level = scanner.nextLine();
+
+            pst.setString(1, dept);
+            pst.setString(2, pay_type);
+            pst.setString(3, education_level);
 
             rs = pst.executeQuery();
 
