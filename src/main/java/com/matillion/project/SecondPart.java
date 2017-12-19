@@ -23,7 +23,7 @@ public class SecondPart {
                 System.out.println(rs.getString(2));
             }
         } catch (SQLException ex) {
-
+            //Error message goes here
         }
     }
 }
