@@ -5,6 +5,7 @@ Areas of improvement
 
 1/ Exception handling
 2/ Test Driven Development (TDD)
+3/ Improved Menu system - maybe a list of available values
 
 Final SQL query below for a list of people who work in the department "Temp Stockers", are paid hourly, and have an education level of "Graduate Degree";
 
