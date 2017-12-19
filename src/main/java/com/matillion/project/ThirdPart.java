@@ -24,7 +24,29 @@ public class ThirdPart {
 
     public static void main(String[] args) throws IOException {
 
-        Scanner scan = new Scanner(new File(CSV_FILE));
+        //First step - Parse CSV file
+        List<String> towns = parseCSV(CSV_FILE);
+
+        //Second step - Pick up two towns randomly
+        String[] twoTowns = getTowns(towns);
+
+        //Third step - Calculate the distance between two towns
+        String distance = getDistanceBetweenTwoTowns(twoTowns[0],twoTowns[1]);
+
+        //Fourth step - Print out the distance
+        System.out.println("It will take " + distance + " to walk from " + twoTowns[0].split(",")[0] +
+                " to " + twoTowns[1].split(",")[0] + ".");
+
+    }
+
+    private static List<String> parseCSV(String csvFile) {
+
+        Scanner scan = null;
+        try {
+            scan = new Scanner(new File(csvFile));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         List<String> towns = new ArrayList<String>();
 
         while (scan.hasNext()) {
@@ -33,12 +55,7 @@ public class ThirdPart {
         }
         scan.close();
 
-        String[] twoTowns = getTowns(towns);
-        String distance = getDistanceBetweenTwoTowns(twoTowns[0],twoTowns[1]);
-
-        System.out.println("It will take " + distance + " to walk from " + twoTowns[0].split(",")[0] +
-                " to " + twoTowns[1].split(",")[0] + ".");
-
+        return towns;
     }
 
     private static String getDistanceBetweenTwoTowns(String twoTown, String twoTown1) throws IOException {
@@ -48,8 +65,6 @@ public class ThirdPart {
         urlMap += "&destinations=" + URLEncoder.encode(twoTown1, "UTF-8");
         urlMap += "&mode=walking";
         urlMap += "&key=" + API_KEY;
-
-        System.out.println(urlMap);
 
         URL url = new URL(urlMap);
         HttpURLConnection request = (HttpURLConnection) url.openConnection();
@@ -88,10 +103,12 @@ public class ThirdPart {
         int twoElements = 2;
         Random rand = new Random();
         String[] twoTownsAllocated = new String[2];
-        for(int i =0; i < twoElements; i ++) {
-            int randomIndex = rand.nextInt(towns.size());
-            String randomElement = towns.get(randomIndex);
-            twoTownsAllocated[i] = randomElement;
+        if (towns!=null) {
+            for(int i =0; i < twoElements; i ++) {
+                int randomIndex = rand.nextInt(towns.size());
+                String randomElement = towns.get(randomIndex);
+                twoTownsAllocated[i] = randomElement;
+            }
         }
         return twoTownsAllocated;
     }

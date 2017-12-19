@@ -1,4 +1,4 @@
-package com.barclays.project;
+package com.matillion.project;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
