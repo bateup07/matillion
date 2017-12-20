@@ -1,13 +1,16 @@
 package com.matillion.project;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SecondPart {
 
-    private static final String DEPT_DESC = "Temp Stockers";
-    private static final String PAY_TYPE = "Hourly";
-    private static final String EDUCATION_LEVEL = "Graduate Degree";
+    //Redundant due to Java Menu being implemented
+    //private static final String DEPT_DESC = "Temp Stockers";
+    //private static final String PAY_TYPE = "Hourly";
+    //private static final String EDUCATION_LEVEL = "Graduate Degree";
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
@@ -36,6 +39,30 @@ public class SecondPart {
             System.out.println("Enter your department description");
             String dept = scanner.nextLine();
 
+            //load department values
+            List<String> deptValues = new ArrayList<String>();
+            String[] deptValuesS = new String[] {"HQ General Management","HQ Information Systems","HQ Marketing",
+                    "HQ Human Resources","HQ Finance and Accounting","Store Management",
+                    "Store Information Systems","Permanent Checkers","Temp Checkers",
+                    "Permanent Stockers","Temp Stockers","Store Permanent Butchers"};
+
+            for (int i = 0; i < deptValuesS.length;i++) {
+                if (deptValuesS[i].equalsIgnoreCase(dept)) {
+                    System.out.println("Matched. Please go to the next step");
+                } else {
+                    System.out.println("Nothing matched");
+                }
+            }
+
+            //user selects valid department value
+
+            //load pay type values
+            //user selects valid department value
+
+            //load education values
+            //user selects valid education value
+
+
             System.out.println("Enter your pay type");
             String pay_type = scanner.nextLine();
 
@@ -55,6 +82,10 @@ public class SecondPart {
                 String gender = rs.getString("gender");
                 System.out.println(full_name + " " + birth_date + " " + hire_date + " " + gender);
             }
+
+            rs.close();
+            pst.close();
+            conn.close();
 
         } catch (SQLException ex) {
             //Error message goes here
