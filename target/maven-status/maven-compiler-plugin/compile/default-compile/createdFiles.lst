@@ -1,1 +1,13 @@
-com/barclays/project/App.class
+com/matillion/project/model/Row$Builder.class
+com/matillion/project/model/Element$Builder.class
+com/matillion/project/model/Element.class
+com/matillion/project/model/Row.class
+com/matillion/project/model/Duration$Builder.class
+com/matillion/project/FirstPart.class
+com/matillion/project/model/Distance$Builder.class
+com/matillion/project/model/Duration.class
+com/matillion/project/model/Map$Builder.class
+com/matillion/project/model/Map.class
+com/matillion/project/SecondPart.class
+com/matillion/project/ThirdPart.class
+com/matillion/project/model/Distance.class
