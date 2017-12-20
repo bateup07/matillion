@@ -1,12 +1,9 @@
 package com.matillion.project;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class SecondPart {
-
     //Redundant due to Java Menu being implemented
     //private static final String DEPT_DESC = "Temp Stockers";
     //private static final String PAY_TYPE = "Hourly";
@@ -34,39 +31,52 @@ public class SecondPart {
 
             pst = conn.prepareStatement(sql);
 
-            //User input
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter your department description");
-            String dept = scanner.nextLine();
 
-            //load department values
-            List<String> deptValues = new ArrayList<String>();
-            String[] deptValuesS = new String[] {"HQ General Management","HQ Information Systems","HQ Marketing",
-                    "HQ Human Resources","HQ Finance and Accounting","Store Management",
-                    "Store Information Systems","Permanent Checkers","Temp Checkers",
-                    "Permanent Stockers","Temp Stockers","Store Permanent Butchers"};
+            //User input for department description
+            Scanner firstOption = new Scanner(System.in);
+            System.out.println("Enter your department description:");
+            String dept = firstOption.nextLine();
 
-            //user selects valid department value
-            for (int i = 0; i < deptValuesS.length;i++) {
-                if (deptValuesS[i].equalsIgnoreCase(dept)) {
-
-                } else {
-
-                }
+            while(!dept.equalsIgnoreCase("HQ General Management") &&
+                    !dept.equalsIgnoreCase("HQ Information Systems") &&
+                    !dept.equalsIgnoreCase("HQ Marketing") &&
+                    !dept.equalsIgnoreCase("HQ Human Resources") &&
+                    !dept.equalsIgnoreCase("HQ Finance and Accounting") &&
+                    !dept.equalsIgnoreCase("Store Management") &&
+                    !dept.equalsIgnoreCase("Store Information Systems") &&
+                    !dept.equalsIgnoreCase("Permanent Checkers") &&
+                    !dept.equalsIgnoreCase("Temp Checkers") &&
+                    !dept.equalsIgnoreCase("Permanent Stockers") &&
+                    !dept.equalsIgnoreCase("Temp Stockers") &&
+                    !dept.equalsIgnoreCase("Store Permanent Butchers")) {
+                System.out.println("Please re-enter department description");
+                dept = scanner.nextLine();
             }
 
-            //load pay type values
-            //user selects valid department value
+            //User input for pay type
+            Scanner secondOption = new Scanner(System.in);
+            System.out.println("Enter your pay type:");
+            String pay_type = secondOption.nextLine();
 
-            //load education values
-            //user selects valid education value
+            while (!pay_type.equalsIgnoreCase("Hourly") && !pay_type.equalsIgnoreCase("Monthly")) {
+                System.out.println("Please choose either Hourly or Monthly");
+                pay_type = scanner.nextLine();
+            }
 
-            System.out.println("Enter your pay type");
-            String pay_type = scanner.nextLine();
-
+            //User input for education level
+            Scanner thirdOption = new Scanner(System.in);
             System.out.println("Enter your education level");
-            String education_level = scanner.nextLine();
+            String education_level = thirdOption.nextLine();
 
+            while (!education_level.equalsIgnoreCase("Graduate Degree") &&
+                    !education_level.equalsIgnoreCase("Bachelors Degree") &&
+                    !education_level.equalsIgnoreCase("Partial College") &&
+                    !education_level.equalsIgnoreCase("High School Degree") &&
+                    !education_level.equalsIgnoreCase("Partial High School")) {
+                System.out.println("Please re-enter education level");
+                education_level = scanner.nextLine();
+            }
             pst.setString(1, dept);
             pst.setString(2, pay_type);
             pst.setString(3, education_level);
