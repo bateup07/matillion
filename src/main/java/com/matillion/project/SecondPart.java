@@ -46,22 +46,20 @@ public class SecondPart {
                     "Store Information Systems","Permanent Checkers","Temp Checkers",
                     "Permanent Stockers","Temp Stockers","Store Permanent Butchers"};
 
+            //user selects valid department value
             for (int i = 0; i < deptValuesS.length;i++) {
                 if (deptValuesS[i].equalsIgnoreCase(dept)) {
-                    System.out.println("Matched. Please go to the next step");
+
                 } else {
-                    System.out.println("Nothing matched");
+
                 }
             }
-
-            //user selects valid department value
 
             //load pay type values
             //user selects valid department value
 
             //load education values
             //user selects valid education value
-
 
             System.out.println("Enter your pay type");
             String pay_type = scanner.nextLine();

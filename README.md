@@ -18,3 +18,15 @@ AND education_level = "Graduate Degree"
 ORDER BY full_name ASC;
 =================
 DO NOT COPY
+
+
+Outstanding items
+
+1. Populate department description values from DB
+2. Populate pay type from DB
+3. Populate education level from DB
+
+4. Check if user input matches first option then proceed
+5. Check if user input matches second option then proceed
+6. Check if user input matches third option then proceed
+7. If none matches then display error message and no SQL is executed
