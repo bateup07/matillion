@@ -77,14 +77,17 @@ public class SecondPart {
 
             rs = pst.executeQuery();
 
-            while (rs.next()) {
-                String full_name = rs.getString("full_name");
-                String birth_date = rs.getString("birth_date");
-                String hire_date = rs.getString("hire_date");
-                String gender = rs.getString("gender");
-                System.out.println(full_name + " " + birth_date + " " + hire_date + " " + gender);
+            if (rs.next() == false) {
+                System.out.println("No data available");
+            } else {
+                while (rs.next()) {
+                    String full_name = rs.getString("full_name");
+                    String birth_date = rs.getString("birth_date");
+                    String hire_date = rs.getString("hire_date");
+                    String gender = rs.getString("gender");
+                    System.out.println(full_name + " " + birth_date + " " + hire_date + " " + gender);
+                }
             }
-
             rs.close();
             pst.close();
             conn.close();
